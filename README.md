@@ -7,8 +7,9 @@ The backend code for the application is available [here](https://github.com/deva
 Steps to run the application: 
 
 Clone the repository
+(You can do this after forking the repository as well but remeber to change the reporsitory url in the command)
 
-```git clone <repository_url>```
+```git clone https://github.com/devanshhooda/vehicle_realtime_frontend.git```
 
 Enter the directory
 
