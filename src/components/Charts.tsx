@@ -1,9 +1,24 @@
-import { useRef, useEffect } from 'react';
-import { Chart, ChartConfiguration } from 'chart.js';
+import { useRef, useEffect, useState } from 'react';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import ChartProps from '../props/ChartProps';
 
-const SpeedChart = ({ data }: ChartProps) => {
+// Register the necessary components
+Chart.register(...registerables);
+
+const Charts = ({ label, data }: ChartProps) => {
     const chartRef = useRef<HTMLCanvasElement | null>(null);
+    const chartInstance = useRef<Chart | null>(null);
+    const [debouncedData, setDebouncedData] = useState(data);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedData(data);
+        }, 500);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [data]);
 
     useEffect(() => {
         if (chartRef.current) {
@@ -11,13 +26,15 @@ const SpeedChart = ({ data }: ChartProps) => {
 
             if (ctx) {
                 const chartData = {
-                    labels: data.map((point) => new Date(point.time).toLocaleTimeString()),
+                    labels: debouncedData.map((point) => new Date(point.time).toLocaleTimeString()),
                     datasets: [
                         {
-                            label: 'Speed (km/h)',
-                            data: data.map((point) => point.speed),
-                            borderColor: 'blue',
-                            fill: false,
+                            label: label,
+                            data: debouncedData.map((point) =>
+                                label.includes('Charge') ? point.soc : point.speed
+                            ),
+                            borderColor: label.includes('Charge') ? 'green' : 'blue',
+                            fill: true,
                         },
                     ],
                 };
@@ -27,12 +44,25 @@ const SpeedChart = ({ data }: ChartProps) => {
                     data: chartData,
                 };
 
-                new Chart(ctx, config);
+                // Destroy the previous chart instance if it exists
+                if (chartInstance.current) {
+                    chartInstance.current.destroy();
+                }
+
+                // Create new chart instance
+                chartInstance.current = new Chart(ctx, config);
             }
         }
-    }, [data]);
 
-    return <canvas ref={chartRef} className="bg-white rounded-lg shadow-lg p-4 mb-4" />;
+        // Cleanup function to destroy the chart instance when the component unmounts
+        return () => {
+            if (chartInstance.current) {
+                chartInstance.current.destroy();
+            }
+        };
+    }, [debouncedData, label]);
+
+    return <canvas ref={chartRef} className="bg-white rounded-lg shadow-lg p-8 my-auto mr-96" />;
 };
 
-export default SpeedChart;
+export default Charts;

@@ -1,19 +1,34 @@
 import { useEffect, useState } from 'react';
-import { io, Socket } from 'socket.io-client';
 import VehicleProps from '../props/VehicleProps';
 
-const useWebSocket = (url: string): VehicleProps | null => {
-    const [data, setData] = useState<VehicleProps | null>(null);
+const useWebSocket = (url: string): VehicleProps[] => {
+    const [data, setData] = useState<VehicleProps[]>([]);
 
     useEffect(() => {
-        const socket: Socket = io(url);
+        const socket = new WebSocket(url);
 
-        socket.on('data', (newData: VehicleProps) => {
-            setData(newData);
-        });
+        socket.onopen = () => {
+            console.log('WebSocket connection opened');
+        };
 
-        return () => {
-            socket.disconnect();
+        socket.onmessage = (event) => {
+
+            const newJsonData = JSON.parse(event.data);
+
+            const gpsStr: string = newJsonData.gps;
+            newJsonData.gps = gpsStr.split("|");
+
+            console.log(`newJsonData: ${JSON.stringify(newJsonData)}`);
+            const newData: VehicleProps = newJsonData;
+            setData((prevData) => [...prevData, newData]);
+        };
+
+        socket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+        socket.onclose = () => {
+            console.log('WebSocket connection closed');
         };
     }, [url]);
 
