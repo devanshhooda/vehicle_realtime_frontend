@@ -25,6 +25,7 @@ function App() {
               />
             </div>
         </div>
+
         <Charts label="Speed" data={data} />
         <Charts label="State of Charge" data={data} />
       </div>
