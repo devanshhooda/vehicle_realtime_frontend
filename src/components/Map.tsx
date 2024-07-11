@@ -15,7 +15,7 @@ const Map = ({ gps }: MapProps) => {
     const center = [gps[0], gps[1]];
 
     return (
-        <div className="w-60 h-60">
+        <div className="w-72 h-72">
             <MapContainer className="w-full h-full">
                 <SetViewOnLoad center={center} />
                 <TileLayer
