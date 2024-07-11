@@ -4,7 +4,8 @@ import Map from './components/Map';
 import useWebsocket from './hooks/useWebsocket';
 
 function App() {
-  const url = 'ws://localhost:3000';
+  const url = 'ws://localhost:3000'; // change this Url as per your preference
+
   const data = useWebsocket(url);
 
   if (!data.length) return <div className="text-center text-gray-700">Loading...</div>;
