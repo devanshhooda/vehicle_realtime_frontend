@@ -1,6 +1,6 @@
 # ChargePoint vehicle portal
 
-This frontend React app is to show real-time data getting fetched through web sockets.
+This frontend React app is to show real-time data getting fetched through Web sockets.
 
 The backend code for the application is available [here](https://github.com/devanshhooda/frontend-assignment)
 
@@ -29,7 +29,7 @@ Make sure you have the following installed before setting up the project:
 
 ## Running the Backend
 
-1. Navigate to the backend folder i.e- frontend-assignment:
+1. Navigate to the backend folder i.e- [frontend-assignment]:
 
     ```bash
     cd frontend-assignment/
@@ -46,7 +46,7 @@ Make sure you have the following installed before setting up the project:
 
 ## Running the Frontend
 
-1. Navigate to the frontenp app folder i.e- vehicle_realtime_frontend:
+1. Navigate to the frontenp app folder i.e- [vehicle_realtime_frontend]:
 
     ```bash
     cd vehicle_realtime_frontend/
