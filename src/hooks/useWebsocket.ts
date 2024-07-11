@@ -15,8 +15,11 @@ const useWebsocket = (url: string): VehicleProps[] => {
 
             const newJsonData = JSON.parse(event.data);
 
+            // Converting the gps data 
             const gpsStr: string = newJsonData.gps;
-            newJsonData.gps = gpsStr.split("|");
+            const gpsStrArr: string[] = gpsStr.split("|");
+            const gpsData: [number, number] = [Number(gpsStrArr[0]), Number(gpsStr[1])]
+            newJsonData.gps = gpsData;
 
             console.log(`newJsonData: ${JSON.stringify(newJsonData)}`);
             const newData: VehicleProps = newJsonData;
