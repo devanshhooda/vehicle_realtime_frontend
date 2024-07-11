@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import VehicleProps from '../props/VehicleProps';
 
-const useWebSocket = (url: string): VehicleProps[] => {
+const useWebsocket = (url: string): VehicleProps[] => {
     const [data, setData] = useState<VehicleProps[]>([]);
 
     useEffect(() => {
@@ -35,4 +35,4 @@ const useWebSocket = (url: string): VehicleProps[] => {
     return data;
 };
 
-export default useWebSocket;
+export default useWebsocket;

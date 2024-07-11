@@ -1,10 +1,10 @@
 import Dashboard from './components/Dashboard';
 import Charts from './components/Charts';
-import useWebSocket from './hooks/useWebsocket';
+import useWebsocket from './hooks/useWebsocket';
 
 function App() {
   const url = 'ws://localhost:3000';
-  const data = useWebSocket(url);
+  const data = useWebsocket(url);
 
   if (!data.length) return <div className="text-center text-gray-700">Loading...</div>;
 
