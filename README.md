@@ -1,24 +1,63 @@
 # ChargePoint vehicle portal
 
-This frontend React app is to show real-time data getting fetched through web sockets.
+This frontend React app is to show real-time data getting fetched through Web sockets.
 
 The backend code for the application is available [here](https://github.com/devanshhooda/frontend-assignment)
 
-Steps to run the application: 
+## Table of Contents
 
-Clone the repository
-(You can do this after forking the repository as well but remeber to change the reporsitory url in the command)
+- [Prerequisites](#prerequisites)
+- [Cloning repositories](#cloning-repositories)
+- [Running the Backend](#running-the-backend)
+- [Running the Frontend](#running-the-frontend)
 
-```git clone https://github.com/devanshhooda/vehicle_realtime_frontend.git```
+## Prerequisites
 
-Enter the directory
+Make sure you have the following installed before setting up the project:
 
-```cd frontend-assignment```
+- npm
+- Node.js
 
-Install all the dependencies
+## Cloning repositories
 
-```npm i```
+- Clone the following repositories
 
-Run the app
+    ```bash
+    git clone https://github.com/devanshhooda/vehicle_realtime_frontend.git
 
-```npm run dev```
+    git clone https://github.com/devanshhooda/frontend-assignment.git
+
+## Running the Backend
+
+1. Navigate to the backend folder i.e- **frontend-assignment**:
+
+    ```bash
+    cd frontend-assignment/
+
+2. Install the npm packages:
+
+   ```bash
+   npm install
+
+3. Start the server:
+    
+    ```bash
+    npm start
+
+## Running the Frontend
+
+1. Navigate to the frontenp app folder i.e- **vehicle_realtime_frontend**:
+
+    ```bash
+    cd vehicle_realtime_frontend/
+
+2. Install the npm packages:
+
+   ```bash
+   npm install
+
+3. Start the server:
+    
+    ```bash
+    npm run dev
+    
