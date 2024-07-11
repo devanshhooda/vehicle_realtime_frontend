@@ -21,7 +21,7 @@ const useWebsocket = (url: string): VehicleProps[] => {
             const gpsData: [number, number] = [Number(gpsStrArr[0]), Number(gpsStr[1])]
             newJsonData.gps = gpsData;
 
-            console.log(`newJsonData: ${JSON.stringify(newJsonData)}`);
+            // console.log(`newJsonData: ${JSON.stringify(newJsonData)}`);
             const newData: VehicleProps = newJsonData;
             setData((prevData) => [...prevData, newData]);
         };

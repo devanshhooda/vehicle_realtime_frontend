@@ -6,9 +6,10 @@ const Dashboard = ({ speed, soc, energy, odo }: DashboardProps) => {
             <div className="mb-4">
                 <span className="block text-sm font-medium text-gray-700">Current Speed</span>
                 <progress value={speed} max="120" className="w-full h-4 rounded bg-gray-200">
-                    <div className="bg-blue-500 h-4 rounded" style={{ width: `${(speed / 120) * 100}%` }}></div>
+                    <div className="bg-blue-500 h-4 rounded" style={{ width: `${(speed / 120) * 100}%` }}>
+                        <span className="block text-sm font-medium text-white">{speed} km/h</span>
+                    </div>
                 </progress>
-                <span className="block text-sm font-medium text-gray-700">{speed} km/h</span>
             </div>
             <div className="mb-4">
                 <span className="block text-sm font-medium text-gray-700">State of Charge</span>
@@ -17,13 +18,15 @@ const Dashboard = ({ speed, soc, energy, odo }: DashboardProps) => {
                 </progress>
                 <span className="block text-sm font-medium text-gray-700">{soc} %</span>
             </div>
-            <div className="mb-4">
-                <span className="block text-sm font-medium text-gray-700">Energy</span>
-                <span className="block text-sm font-medium text-gray-700">{energy} kW</span>
-            </div>
-            <div>
-                <span className="block text-sm font-medium text-gray-700">Odometer</span>
-                <span className="block text-sm font-medium text-gray-700">{odo} km</span>
+            <div className='flex flex-row'>
+                <div className="mb-4 m-8">
+                    <span className="block text-sm font-medium text-gray-700">Energy</span>
+                    <span className="block text-sm font-medium text-gray-700">{energy} kW</span>
+                </div>
+                <div className='mb-4 m-8'>
+                    <span className="block text-sm font-medium text-gray-700">Odometer</span>
+                    <span className="block text-sm font-medium text-gray-700">{odo} km</span>
+                </div>
             </div>
         </div>
     );
