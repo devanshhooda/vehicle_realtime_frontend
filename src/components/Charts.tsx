@@ -46,7 +46,7 @@ const Charts = ({ label, data }: ChartProps) => {
                     data: chartData
                 };
 
-                console.log("Creating new chart instance");
+                // console.log("Creating new chart instance");
                 chartInstance.current = new Chart(ctx, config);
             }
         }
