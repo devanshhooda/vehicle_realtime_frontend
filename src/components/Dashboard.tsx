@@ -1,23 +1,11 @@
 import DashboardProps from '../props/DashboardProps';
+import Progressbar from './Progressbar';
 
 const Dashboard = ({ speed, soc, energy, odo }: DashboardProps) => {
     return (
         <div className="p-4 bg-white rounded-lg shadow-lg mb-4">
-            <div className="mb-4">
-                <span className="block text-sm font-medium text-gray-700">Current Speed</span>
-                <progress value={speed} max="120" className="w-full h-4 rounded bg-gray-200">
-                    <div className="bg-blue-500 h-4 rounded" style={{ width: `${(speed / 120) * 100}%` }}>
-                        <span className="block text-sm font-medium text-white">{speed} km/h</span>
-                    </div>
-                </progress>
-            </div>
-            <div className="mb-4">
-                <span className="block text-sm font-medium text-gray-700">State of Charge</span>
-                <progress value={soc} max="100" className="w-full h-4 rounded bg-gray-200">
-                    <div className="bg-green-500 h-4 rounded" style={{ width: `${soc}%` }}></div>
-                </progress>
-                <span className="block text-sm font-medium text-gray-700">{soc} %</span>
-            </div>
+            <Progressbar label={'Current Speed'} value={speed} unit={'km/h'} color={'bg-blue-500'} />
+            <Progressbar label={'State of Charge'} value={soc} unit={'%'} color={'bg-green-500'} />
             <div className='flex flex-row'>
                 <div className="mb-4 m-8">
                     <span className="block text-sm font-medium text-gray-700">Energy</span>
