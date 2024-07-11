@@ -1,7 +1,7 @@
 interface VehicleProps {
     time: number;
     energy: number;
-    gps: [string, string];
+    gps: [number, number];
     odo: number;
     speed: number;
     soc: number;
