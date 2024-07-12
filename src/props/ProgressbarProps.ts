@@ -1,6 +1,7 @@
 interface ProgressbarProps {
     label: string;
     value: number;
+    max: number;
     unit: string;
     color: string;
 }
